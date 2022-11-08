@@ -1,0 +1,50 @@
+//In the Name of Allah, the Most Beneficent, the Most Merciful.
+//Author: M.A. Jobayed Hossain Asif.
+#include<bits/stdc++.h>
+using namespace std;
+
+#define pb push_back
+#define ll long long 
+ 
+vector<ll>prime;
+bool is_prime[90000001];
+void sieve(){
+    ll max_N = 90000000;
+    for(int i = 2;i * i < max_N;i++){
+        if(!is_prime[i]){
+            //prime.pb(i);
+            for(int j = i * i;j<=max_N;j+=i) is_prime[j] = true;
+        }
+    }
+    for(int i = 2;i<=max_N;i++){
+        if(!is_prime[i]) {
+            prime.pb(i);
+            //cout<<prime[i];
+        }
+    }
+}
+
+ 
+int main() {
+    
+ 
+// #ifndef ONLINE_JUDGE
+//     freopen("input1.txt", "r", stdin);
+//      freopen("output1.txt", "w", stdout);
+//     freopen("error1.txt", "w", stderr);
+// #endif
+     sieve();
+    ll t ;
+    cin >> t;
+    
+    while(t--){
+        ll b;
+        cin>>b;
+       // cout<<b<<ln;
+        cout<<prime[b-1]<<endl;
+    }
+   
+   
+    return 0;
+}
+//https://www.spoj.com/problems/TDKPRIME/
